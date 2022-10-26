@@ -2,7 +2,7 @@ package com.company;
 
 public class DuplicateNumbers {
     public static void main(String[] args) {
-     int arr[] = new int[]{1,2,3,2,4};
+     int arr[] = new int[]{0,2,3,2,4};
         System.out.println("The duplicate Number is: " + findDuplicate(arr) );
     }
 

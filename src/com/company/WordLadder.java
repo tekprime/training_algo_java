@@ -26,7 +26,7 @@ public class WordLadder {
 
             int size = queue.size();
 
-            for (int i = 0; i < size ; i++) {
+           for (int i = 0; i < size ; i++) {
               String word = queue.poll();
               if (word.equals(endWord)) return changes;
 
@@ -40,9 +40,9 @@ public class WordLadder {
                             visited.add(matchString);
                         }
 
-
                     }
                 }
+
             }
             ++changes;
 

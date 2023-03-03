@@ -46,21 +46,32 @@ public class GetTheWordList {
             long count = Long.valueOf(elmArr[1]);
             String word = elmArr[0];
             if ( word.length() <= 5 && word.length() >=2) {
-                countMap.put(count, word);
+                if(countMap.size() == 15) {
+                    Long lastkey = ((TreeMap<Long, String>) countMap).lastKey();
+                    if( lastkey < count) {
+                        ((TreeMap<Long, String>) countMap).pollLastEntry();
+                        countMap.put(count, word);
+                    }
+
+                } else countMap.put(count, word);
             }
 
         }
+        Long lastkey = ((TreeMap<Long, String>) countMap).lastKey();
+        System.out.println(lastkey);
         System.out.println(countMap);
+
+
 
         //
        // Map<Long, String> filteredMap = countMap.entrySet().stream().limit(15).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1,v2) ->v1, TreeMap::new));
-        int i = 0;
+       /* int i = 0;
         for (Map.Entry ent: countMap.entrySet()
              ) {
             System.out.println(ent.getValue()+ " : " + ent.getKey());
             i++;
             if (i == 15) break;
-        }
+        }*/
         // System.out.println(filteredMap);
     }
 }

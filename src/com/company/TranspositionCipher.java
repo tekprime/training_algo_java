@@ -8,10 +8,9 @@ public class TranspositionCipher {
         int cols = 6;
         StringBuilder result = new StringBuilder();
         int i = 0;
-        while ( i < message1.length() && i < 6){
+        while ( i < 6){
 
             int j = i;
-
             while( j < message1.length()) {
                 result.append(message1.charAt(j));
                 j = j + 6;

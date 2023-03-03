@@ -5,7 +5,32 @@ import java.util.Map;
 
 public class WinningHands {
     public static void main(String[] args) {
-        // System.out.println(10 % 2);
+
+            String tiles1 = "1133355";
+
+            Map<Integer, Integer> tileCountMap = new HashMap<>();
+
+            for (int index = 0; index < tiles1.length(); index++) {
+                int current_tiles = Character.getNumericValue(tiles1.charAt(index));
+                int tile_count = (tileCountMap.containsKey(current_tiles))? tileCountMap.get(current_tiles) + 1 :1;
+                tileCountMap.put(current_tiles, tile_count);
+            }
+
+            boolean isValid = true;
+            int pairCount = 0;
+
+            for (int tile : tileCountMap.keySet()) {
+                if (tileCountMap.get(tile) % 3 == 2) pairCount++;
+                else if (tileCountMap.get(tile) % 3 == 0) continue;
+                else isValid = false;
+            }
+
+            if (pairCount == 1 && isValid) System.out.println(true);
+            else System.out.println(false);
+
+        }
+    }
+        /*// System.out.println(10 % 2);
         String tiles1 = "11133555";
         Map<Character, Integer> numMap = numbersCount(tiles1);
         System.out.println(numMap);
@@ -37,7 +62,7 @@ public class WinningHands {
             count_map.put(currentChar, charCount + 1);
         }
         return count_map;
-    }
+    }*/
 
 
-}
+

@@ -21,8 +21,10 @@ public class WordScramble {
                     break;
                 }
             }
-            if (wordDetected) System.out.println(word);
-
+            if (wordDetected) {
+                System.out.println(word);
+                break;
+            }
         }
 
 

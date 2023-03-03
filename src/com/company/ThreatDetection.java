@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,7 +17,87 @@ class QIt {
     }
 }
 public class ThreatDetection {
-    private static final int[][] directions = {{0,1}, {1,0}, {-1, 0}, {0, -1}};
+
+    public static void main(String[] argv) {
+        System.out.println("Hello, world!");
+        System.out.println("This is a fully functioning Java environment.");
+
+        char[][] board1 = {
+                {'-', '-', '-', 'M', '-', '-'},
+                {'-', '-', '-', '-', 'M', '-'},
+                {'M', '-', '-', 'P', '-', '-'},
+                {'M', '-', '-', '-', '-', '-'},
+                {'-', 'M', '-', '-', '-', '-'},
+        };
+
+        int rows = board1.length;
+        int cols = board1[0].length;
+
+        int x =0, y=0, distance;
+
+        outer: for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if(board1[i][j] == 'P') {
+                    x = i;
+                    y= j;
+                    break outer;
+                }
+
+            }
+        }
+        distance = findminDistance(board1, x, y, rows, cols);
+
+        System.out.println(distance);
+
+
+
+    }
+
+    private static int findminDistance(char[][] board1, int x, int y, int rows, int cols) {
+
+        HashSet<Integer> set = new HashSet<>();
+        int distance = -1;
+
+
+        for (int i = x + 1; i < rows ; i++) {
+            distance++;
+            if (board1[i][y] == 'M') {
+                set.add(distance);
+                break;
+            }
+        }
+        distance = -1;
+
+        for (int i1 = x - 1; i1 >= 0 ; i1--) {
+            distance++;
+            if (board1[i1][y] == 'M') {
+                set.add(distance);
+                break;
+            }
+        }
+
+        distance = -1;
+
+        for (int i2 = y + 1; i2 < cols ; i2++) {
+            distance++;
+            if (board1[x][i2] == 'M') {
+                set.add(distance);
+                break;
+            }
+        }
+        distance = -1;
+        for (int i3 = y - 1; i3 >= 0 ; i3--) {
+            distance++;
+            if (board1[x][i3] == 'M') {
+                set.add(distance);
+                break;
+            }
+        }
+
+
+        return Collections.min(set);
+    }
+    /*private static final int[][] directions = {{0,1}, {1,0}, {-1, 0}, {0, -1}};
 
     public static void main(String[] args) {
       char[][]  board = {
@@ -68,5 +150,5 @@ public class ThreatDetection {
         }
         return 0;
 
-    }
+    }*/
 }

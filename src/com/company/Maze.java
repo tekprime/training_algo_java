@@ -67,6 +67,7 @@ public class Maze {
 
         int numRows = grid.length;
         int numCols = grid[0].length;
+
         System.out.println("number of rows: "+ numRows + " number of col: " + numCols);
 
         for (int i = 0; i < numRows ; i++) {
@@ -107,6 +108,7 @@ public class Maze {
         queue.add(new QItem(source.row, source.col, 0));
 
         boolean[][] visited = new boolean[grid.length][grid[0].length];
+
         visited[source.row][source.col] = true;
 
         while (!queue.isEmpty()) {

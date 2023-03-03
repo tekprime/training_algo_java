@@ -27,7 +27,6 @@ public class SortListDemo {
         mymap.entrySet().stream().forEach(obj -> System.out.println(obj.getKey()));
 
         List<Employee> employees = Database.getEmployees();
-
         employees.stream().sorted(Comparator.comparing(Employee::getSalary)).forEach(System.out::println);
 
         Map<Integer, Employee> empmap = new TreeMap<>();
